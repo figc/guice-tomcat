@@ -4,6 +4,8 @@ import com.google.inject.Provider;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
 import java.util.List;
 
 public class MyServiceImpl implements MyService {
@@ -25,10 +27,16 @@ public class MyServiceImpl implements MyService {
    }
 
     @Override
+    @com.google.inject.persist.Transactional
 	public void delete(MyEntity e) {
         EntityManager em = emp.get();
 //        em.remove(e);
-        em.createNamedQuery("MyEntity.deleteById", MyEntity.class).setParameter("id", e.getId());
+        
+        TypedQuery<MyEntity> q  = em.createNamedQuery("MyEntity.deleteById", MyEntity.class);
+        q.setParameter("id", e.getId());
+        int records = q.executeUpdate();
+        
+        System.out.println("deleted "+ records + " records");
 	}
 
 	@Override

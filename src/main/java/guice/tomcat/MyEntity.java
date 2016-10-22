@@ -8,7 +8,7 @@ import java.util.Date;
 
 @NamedQueries({
 	@NamedQuery(name = "MyEntity.findAll", query = "SELECT e FROM MyEntity e ORDER BY e.id DESC"),
-	@NamedQuery(name = "MyEntity.deleteById", query = "DELETE FROM MyEntity WHERE id = :id")
+	@NamedQuery(name = "MyEntity.deleteById", query = "DELETE FROM MyEntity e WHERE e.id = :id")
 })
 public class MyEntity implements Serializable {
 
