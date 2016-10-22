@@ -1,0 +1,10 @@
+<Context>
+
+	<Resource name="jdbc/derby" 
+	      	  auth="Container"
+			  driverClassName="org.apache.derby.jdbc.EmbeddedDriver"
+			  username="sa" password="sa"
+			  type="javax.sql.DataSource"
+			  url="jdbc:derby:/tmp/sampledb;create=true"/>
+		  
+</Context>
